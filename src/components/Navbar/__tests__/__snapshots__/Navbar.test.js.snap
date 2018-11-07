@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> renders correctly 1`] = `
+<Menu
+  fluid={true}
+  widths={5}
+>
+  <MenuItem
+    name="Home"
+  />
+  <MenuItem
+    name="About Us"
+  />
+  <MenuItem
+    name="Shariah Compliance"
+  />
+  <MenuItem
+    name="Helpful Websites"
+  />
+  <MenuItem
+    name="Contact Us"
+  />
+</Menu>
+`;
