@@ -6,6 +6,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "semantic-ui-css": "^2.4.1",
@@ -20,6 +21,33 @@
     "lint": "eslint --ext .js --ext .jsx ./src",
     "lint:css": "stylelint './src/**/*.js'"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  },
+  "babel": {
+    "plugins": [
+      [
+        "babel-plugin-styled-components",
+        {
+          "displayName": true
+        }
+      ]
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -31,6 +59,9 @@
   ],
   "devDependencies": {
     "babel-eslint": "9",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react-app": "^3.0.5",
