@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> renders correctly 1`] = `
+<Menu
+  fluid={true}
+  widths={2}
+>
+  <MenuItem
+    name="Copyright"
+  />
+  <MenuItem
+    name="Facebook"
+  />
+</Menu>
+`;

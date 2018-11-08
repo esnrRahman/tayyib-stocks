@@ -1,7 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HomePage /> renders correctly 1`] = `
-<div>
-  Home Page
-</div>
+<styled.div>
+  <styled.div>
+    <img
+      alt="Tayyib Stocks Logo"
+      src="tstocks_full_logo.png"
+    />
+  </styled.div>
+  <div>
+    <Input
+      icon={
+        Object {
+          "circular": true,
+          "link": true,
+          "name": "search",
+        }
+      }
+      placeholder="Search for a stock..."
+      type="text"
+    />
+  </div>
+</styled.div>
 `;

@@ -1,21 +1,25 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navbar from './Navbar/Navbar';
+import Footer from './Footer/Footer';
 import HomePage from '../pages/home/HomePage';
 
-const App = () => {
-  return (
-    <Fragment>
-      <Navbar />
-      <Router>
+import { StyledApp, StyledAppHolder } from './AppStyles';
+
+const App = () => (
+  <StyledApp>
+    <Navbar />
+    <Router>
+      <StyledAppHolder>
         <Switch>
           <Route exact path="/" component={HomePage} />
         </Switch>
-      </Router>
-    </Fragment>
-  );
-};
+      </StyledAppHolder>
+    </Router>
+    <Footer />
+  </StyledApp>
+);
 
 export default App;
