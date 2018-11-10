@@ -1,15 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Footer /> renders correctly 1`] = `
-<Menu
+<Styled(Menu)
   fluid={true}
-  widths={2}
+  secondary={true}
 >
-  <MenuItem
-    name="Copyright"
-  />
-  <MenuItem
-    name="Facebook"
-  />
-</Menu>
+  <Styled(MenuItem)>
+    Copyright © Tayyib Stocks
+  </Styled(MenuItem)>
+  <MenuMenu
+    position="right"
+  >
+    <Styled(MenuItem)
+      href="https://www.facebook.com/groups/1387536778189499"
+      target="_blank"
+    >
+      <Styled(Icon)
+        name="facebook"
+        position="right"
+      />
+    </Styled(MenuItem)>
+  </MenuMenu>
+</Styled(Menu)>
 `;

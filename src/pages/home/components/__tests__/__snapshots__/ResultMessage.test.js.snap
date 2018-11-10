@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ResultMessage /> renders with custom size 1`] = `
+<Message
+  negative={false}
+  positive={true}
+  size="small"
+>
+  <Styled(MessageHeader)>
+    Test title
+  </Styled(MessageHeader)>
+  <p>
+    Test description
+  </p>
+</Message>
+`;
+
+exports[`<ResultMessage /> renders with default attributes 1`] = `
+<Message
+  negative={false}
+  positive={true}
+  size="large"
+>
+  <Styled(MessageHeader)>
+    Test title
+  </Styled(MessageHeader)>
+  <p>
+    Test description
+  </p>
+</Message>
+`;
+
+exports[`<ResultMessage /> renders with isFailure prop set to true 1`] = `
+<Message
+  negative={true}
+  positive={false}
+  size="large"
+>
+  <Styled(MessageHeader)>
+    Test title
+  </Styled(MessageHeader)>
+  <p>
+    Test description
+  </p>
+</Message>
+`;
