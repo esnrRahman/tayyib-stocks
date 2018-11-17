@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
-import HomePage from '../pages/home/HomePage';
+import HomePageContainer from '../pages/home/HomePageContainer';
 
 import { StyledApp, StyledAppHolder } from './AppStyles';
 
@@ -14,7 +14,7 @@ const App = () => (
     <Router>
       <StyledAppHolder>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={HomePageContainer} />
         </Switch>
       </StyledAppHolder>
     </Router>

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePageContainer /> intially renders correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <img
+      alt="Tayyib Stocks Logo"
+      src="tstocks_full_logo.png"
+    />
+  </styled.div>
+  <Input
+    icon={
+      <Icon
+        as="i"
+        circular={true}
+        inverted={true}
+        link={true}
+        name="search"
+        onClick={[Function]}
+      />
+    }
+    onChange={[Function]}
+    placeholder="Search for a stock..."
+    size="massive"
+    type="text"
+  />
+</styled.div>
+`;
+
+exports[`<HomePageContainer /> renders the ResultMessage if resultMessageProps is present 1`] = `
+<styled.div>
+  <styled.div>
+    <img
+      alt="Tayyib Stocks Logo"
+      src="tstocks_full_logo.png"
+    />
+  </styled.div>
+  <Input
+    icon={
+      <Icon
+        as="i"
+        circular={true}
+        inverted={true}
+        link={true}
+        name="search"
+        onClick={[Function]}
+      />
+    }
+    onChange={[Function]}
+    placeholder="Search for a stock..."
+    size="massive"
+    type="text"
+  />
+  <ResultMessage
+    description="Test description"
+    isFailure={false}
+    size="huge"
+    title="Test title"
+  />
+</styled.div>
+`;
