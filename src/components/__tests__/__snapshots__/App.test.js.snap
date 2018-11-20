@@ -2,18 +2,38 @@
 
 exports[`<App /> renders correctly 1`] = `
 <styled.div>
-  <Navbar />
   <BrowserRouter>
     <styled.div>
+      <Navbar />
       <Switch>
         <Route
           component={[Function]}
           exact={true}
           path="/"
         />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/home"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/about_us"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/helpful_websites"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/shariah_compliance"
+        />
       </Switch>
+      <Footer />
     </styled.div>
   </BrowserRouter>
-  <Footer />
 </styled.div>
 `;

@@ -1,14 +1,25 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react';
+
+import { StyledNavbarMenu, StyledNavbarMenuItem } from './NavbarStyles';
 
 const Navbar = () => (
-  <Menu fluid widths={5}>
-    <Menu.Item name="Home" />
-    <Menu.Item name="About Us" />
-    <Menu.Item name="Shariah Compliance" />
-    <Menu.Item name="Helpful Websites" />
-    <Menu.Item name="Contact Us" />
-  </Menu>
+  <StyledNavbarMenu secondary>
+    <StyledNavbarMenuItem to="/home">
+      Home
+    </StyledNavbarMenuItem>
+    <StyledNavbarMenuItem to="/about_us">
+      About Us
+    </StyledNavbarMenuItem>
+    <StyledNavbarMenuItem to="/shariah_compliance">
+      Shariah Compliance
+    </StyledNavbarMenuItem>
+    <StyledNavbarMenuItem to="/helpful_websites">
+      Helpful Websites
+    </StyledNavbarMenuItem>
+    <StyledNavbarMenuItem to="/contact_us">
+      Contact Us
+    </StyledNavbarMenuItem>
+  </StyledNavbarMenu>
 );
 
 export default Navbar;

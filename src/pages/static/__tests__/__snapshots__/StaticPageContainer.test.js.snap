@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StaticPageContainer /> renders correctly for about_us 1`] = `
+<styled.div>
+  <AboutUsContent />
+</styled.div>
+`;
+
+exports[`<StaticPageContainer /> renders correctly for anything_else 1`] = `<styled.div />`;
+
+exports[`<StaticPageContainer /> renders correctly for helpful_websites 1`] = `
+<styled.div>
+  <HelpfulWebsitesContent />
+</styled.div>
+`;
+
+exports[`<StaticPageContainer /> renders correctly for shariah_compliance 1`] = `
+<styled.div>
+  <ShariahComplianceContent />
+</styled.div>
+`;
