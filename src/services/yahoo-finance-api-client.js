@@ -48,7 +48,7 @@ function getCalculationFromYahoo(companyName) {
   };
 
   const FINANCIALS_API_STRING = [
-    'https://query1.finance.yahoo.com/v10/finance/quoteSummary/',
+    'https://www.tayyibstocks.com/yahoo/v10/finance/quoteSummary/',
     companyName,
     '?',
     'formatted=true&',
@@ -59,7 +59,7 @@ function getCalculationFromYahoo(companyName) {
   ].join('');
 
   const SHARES_OUTSTANDING_API_STRING = [
-    'https://query2.finance.yahoo.com/v10/finance/quoteSummary/',
+    'https://www.tayyibstocks.com/yahoo1/v10/finance/quoteSummary/',
     companyName,
     '?',
     'formatted=true&',
@@ -71,7 +71,7 @@ function getCalculationFromYahoo(companyName) {
 
   const datePeriodUnixString = getDatePeriodUnixString();
   const HISTORICAL_DATA_API_STRING = [
-    'https://query1.finance.yahoo.com/v8/finance/chart/',
+    'https://www.tayyibstocks.com/yahoo/v8/finance/chart/',
     companyName,
     '?',
     'formatted=true&',
