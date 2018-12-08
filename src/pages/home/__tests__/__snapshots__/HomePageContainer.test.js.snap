@@ -8,21 +8,66 @@ exports[`<HomePageContainer /> intially renders correctly 1`] = `
       src="tstocks_full_logo.png"
     />
   </styled.div>
-  <Input
-    icon={
-      <Icon
-        as="i"
-        circular={true}
-        inverted={true}
-        link={true}
-        name="search"
-        onClick={[Function]}
-      />
-    }
+  <Dropdown
+    additionLabel="Add "
+    additionPosition="top"
+    closeOnBlur={true}
+    deburr={false}
+    icon="dropdown"
+    minCharacters={1}
+    noResultsMessage="No results found."
     onChange={[Function]}
+    onSearchChange={[Function]}
+    openOnFocus={true}
+    options={Array []}
     placeholder="Search for a stock..."
-    size="huge"
-    type="text"
+    renderLabel={[Function]}
+    search={true}
+    searchInput="text"
+    selectOnBlur={true}
+    selectOnNavigation={true}
+    selection={true}
+    wrapSelection={true}
+  />
+</styled.div>
+`;
+
+exports[`<HomePageContainer /> renders the HomePageContainer if companyOptions are present 1`] = `
+<styled.div>
+  <styled.div>
+    <img
+      alt="Tayyib Stocks Logo"
+      src="tstocks_full_logo.png"
+    />
+  </styled.div>
+  <Dropdown
+    additionLabel="Add "
+    additionPosition="top"
+    closeOnBlur={true}
+    deburr={false}
+    icon="dropdown"
+    minCharacters={1}
+    noResultsMessage="No results found."
+    onChange={[Function]}
+    onSearchChange={[Function]}
+    openOnFocus={true}
+    options={
+      Array [
+        Object {
+          "key": "1",
+          "text": "ABC company inc.",
+          "value": "ABC",
+        },
+      ]
+    }
+    placeholder="Search for a stock..."
+    renderLabel={[Function]}
+    search={true}
+    searchInput="text"
+    selectOnBlur={true}
+    selectOnNavigation={true}
+    selection={true}
+    wrapSelection={true}
   />
 </styled.div>
 `;
@@ -35,21 +80,26 @@ exports[`<HomePageContainer /> renders the ResultMessage if resultMessageProps i
       src="tstocks_full_logo.png"
     />
   </styled.div>
-  <Input
-    icon={
-      <Icon
-        as="i"
-        circular={true}
-        inverted={true}
-        link={true}
-        name="search"
-        onClick={[Function]}
-      />
-    }
+  <Dropdown
+    additionLabel="Add "
+    additionPosition="top"
+    closeOnBlur={true}
+    deburr={false}
+    icon="dropdown"
+    minCharacters={1}
+    noResultsMessage="No results found."
     onChange={[Function]}
+    onSearchChange={[Function]}
+    openOnFocus={true}
+    options={Array []}
     placeholder="Search for a stock..."
-    size="huge"
-    type="text"
+    renderLabel={[Function]}
+    search={true}
+    searchInput="text"
+    selectOnBlur={true}
+    selectOnNavigation={true}
+    selection={true}
+    wrapSelection={true}
   />
   <ResultMessage
     description="Test description"
