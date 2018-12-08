@@ -37,7 +37,40 @@ function getPercentageWithAverageMarketCapital(value, averageMarketCapital) {
   return (value / averageMarketCapital) * 100;
 }
 
-function getCalculationFromYahoo(companyName) {
+export function getCompanySymbolOptionsFromYahoo(searchTerm) {
+  const SEARCH_TERM_API_STRING = [
+    'https://www.tayyibstocks.com/yahoo1/v1/finance/search/',
+    '?',
+    'q=',
+    searchTerm,
+    '&quotesCount=10',
+    '&quotesQueryId=tss_match_phrase_query',
+    '&multiQuoteQueryId=multi_quote_single_token_query',
+    '&enableCb=true',
+  ].join('');
+
+  return axios.get(SEARCH_TERM_API_STRING)
+    .then((resp) => {
+      const quotesList = resp.data.quotes;
+
+      const filteredCompanyList = quotesList.filter((elem) => ('quoteType' in elem && elem.quoteType === 'EQUITY'));
+
+      const symbolList = filteredCompanyList.map((elem) => {
+        return {
+          key: elem.symbol,
+          value: elem.symbol,
+          text: `${elem.symbol} - ${elem.longname}`,
+        };
+      });
+
+      return symbolList;
+    })
+    .catch((error) => {
+      return error.response;
+    });
+}
+
+export function getCalculationFromYahoo(companyName) {
   const result = {
     totalLiabilitiesPercentage: -1,
     cashAndShortTermInvestmentsPercentage: -1,
@@ -148,6 +181,3 @@ function getCalculationFromYahoo(companyName) {
       return error.response;
     });
 }
-
-// TODO: TEST THIS!
-export default getCalculationFromYahoo;

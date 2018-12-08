@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { Input, Icon } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 
 import { StyledHomePageDiv, StyledImageHolder } from './HomePageContainerStyles';
 import TayyibStocksLogo from './tstocks_full_logo.png';
-import getCalculationFromYahoo from '../../services/yahoo-finance-api-client';
+import {
+  getCalculationFromYahoo, getCompanySymbolOptionsFromYahoo,
+} from '../../services/yahoo-finance-api-client';
 import ResultMessage from './components/ResultMessage';
 
 class HomePageContainer extends Component {
@@ -11,24 +13,23 @@ class HomePageContainer extends Component {
     super(props);
 
     this.state = {
-      companyName: '',
+      companyOptions: [],
       yahooResult: null,
       resultMessageProps: null,
     };
   }
 
-  handleOnChange = (e) => {
-    e.preventDefault();
-    this.setState({ companyName: e.target.value });
+  handleOnChange = async (event, data) => {
+    event.preventDefault();
+    this.setState({ yahooResult: null, resultMessageProps: null });
+    const yahooResult = await getCalculationFromYahoo(data.value);
+    this.setState({ resultMessageProps: this.getResultMessage(yahooResult) });
   }
 
-  handleOnClick = async (e) => {
-    e.preventDefault();
-    const { companyName } = this.state;
-
-    this.setState({ yahooResult: null, resultMessageProps: null });
-    const yahooResult = await getCalculationFromYahoo(companyName);
-    this.setState({ resultMessageProps: this.getResultMessage(yahooResult) });
+  handleOnSearchChange = async (event, data) => {
+    event.preventDefault();
+    const companyOptions = await getCompanySymbolOptionsFromYahoo(data.searchQuery);
+    this.setState({ companyOptions });
   }
 
   getResultMessage = (result) => {
@@ -79,27 +80,21 @@ class HomePageContainer extends Component {
   }
 
   render() {
-    const { resultMessageProps, yahooResult } = this.state;
-
+    const { resultMessageProps, yahooResult, companyOptions } = this.state;
     return (
       <StyledHomePageDiv>
         <StyledImageHolder>
           <img src={TayyibStocksLogo} alt="Tayyib Stocks Logo" />
         </StyledImageHolder>
         <Fragment>
-          <Input
-            size="huge"
-            icon={(
-              <Icon
-                name="search"
-                inverted
-                circular
-                link
-                onClick={this.handleOnClick}
-              />
-            )}
+          <Dropdown
+            search
+            selection
+            options={companyOptions}
             placeholder="Search for a stock..."
+            onSearchChange={this.handleOnSearchChange}
             onChange={this.handleOnChange}
+            onClick={this.handleOnClick}
           />
         </Fragment>
         {

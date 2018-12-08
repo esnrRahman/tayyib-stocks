@@ -3,7 +3,9 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import HomePageContainer from '../HomePageContainer';
-import getCalculationFromYahoo from '../../../services/yahoo-finance-api-client';
+import {
+  getCalculationFromYahoo, getCompanySymbolOptionsFromYahoo,
+} from '../../../services/yahoo-finance-api-client';
 
 jest.mock('../../../services/yahoo-finance-api-client');
 
@@ -34,50 +36,46 @@ describe('<HomePageContainer />', () => {
     expect(toJson(wrapperWithResult)).toMatchSnapshot();
   });
 
-  it('handleOnChange', () => {
-    const testInput = 'test input';
-    const preventDefaultFn = jest.fn();
-    const setStateFn = jest.fn();
-    const mockEvent = {
-      target: {
-        value: testInput,
-      },
-      preventDefault: preventDefaultFn,
-    };
+  it('renders the HomePageContainer if companyOptions are present', () => {
+    const wrapperWithResult = shallow(<HomePageContainer />);
 
-    instance.setState = setStateFn;
-    instance.handleOnChange(mockEvent);
-    expect(preventDefaultFn).toHaveBeenCalled();
-    expect(setStateFn).toHaveBeenCalledWith({ companyName: testInput });
+    wrapperWithResult.setState({
+      companyOptions: [{
+        key: '1',
+        value: 'ABC',
+        text: 'ABC company inc.',
+      }],
+    });
+
+    expect(toJson(wrapperWithResult)).toMatchSnapshot();
   });
 
-  it('handleOnClick', async () => {
+  it('handleOnChange', async () => {
+    const testCompanyName = 'test company';
     const getCalculationFromYahooReturnValue = { b: 1 };
+    const getResultMessageReturnValue = { a: 1 };
     getCalculationFromYahoo.mockImplementation(
       () => getCalculationFromYahooReturnValue
     );
-
-    const testCompanyName = 'test company';
-    wrapper.setState({ companyName: testCompanyName });
-
-    const testInput = 'test input';
     const preventDefaultFn = jest.fn();
-    const setStateFn = jest.fn();
-    const getResultMessageReturnValue = { a: 1 };
     const getResultMessageFn = jest.fn(
       () => getResultMessageReturnValue
     );
+    const setStateFn = jest.fn();
     const mockEvent = {
-      target: {
-        value: testInput,
-      },
       preventDefault: preventDefaultFn,
     };
+    const mockData = {
+      value: testCompanyName,
+    };
+
 
     instance.setState = setStateFn;
     instance.getResultMessage = getResultMessageFn;
-    await instance.handleOnClick(mockEvent);
-    expect(preventDefaultFn).toHaveBeenCalledWith();
+
+    await instance.handleOnChange(mockEvent, mockData);
+
+    expect(preventDefaultFn).toHaveBeenCalled();
     expect(setStateFn).toHaveBeenCalledWith(
       {
         yahooResult: null,
@@ -90,6 +88,38 @@ describe('<HomePageContainer />', () => {
     );
     expect(setStateFn).toHaveBeenCalledWith({
       resultMessageProps: getResultMessageReturnValue,
+    });
+  });
+
+  it('handleOnSearchChange', async () => {
+    const testQuery = 'test query';
+    const getCompanySymbolOptionsFromYahooReturnValue = [
+      {
+        key: '1',
+        value: 'ABC',
+        text: 'ABC company',
+      }];
+    getCompanySymbolOptionsFromYahoo.mockImplementation(
+      () => getCompanySymbolOptionsFromYahooReturnValue
+    );
+    const preventDefaultFn = jest.fn();
+    const setStateFn = jest.fn();
+    const mockEvent = {
+      preventDefault: preventDefaultFn,
+    };
+    const mockData = {
+      searchQuery: testQuery,
+    };
+
+
+    instance.setState = setStateFn;
+
+    await instance.handleOnSearchChange(mockEvent, mockData);
+
+    expect(preventDefaultFn).toHaveBeenCalled();
+    expect(getCompanySymbolOptionsFromYahoo).toHaveBeenCalledWith(testQuery);
+    expect(setStateFn).toHaveBeenCalledWith({
+      companyOptions: getCompanySymbolOptionsFromYahooReturnValue,
     });
   });
 
