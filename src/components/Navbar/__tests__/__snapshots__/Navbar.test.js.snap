@@ -1,24 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Navbar /> renders correctly 1`] = `
-<Menu
-  fluid={true}
-  widths={5}
+<styled.div
+  secondary={true}
 >
-  <MenuItem
-    name="Home"
-  />
-  <MenuItem
-    name="About Us"
-  />
-  <MenuItem
-    name="Shariah Compliance"
-  />
-  <MenuItem
-    name="Helpful Websites"
-  />
-  <MenuItem
-    name="Contact Us"
-  />
-</Menu>
+  <Styled(Link)
+    to="/home"
+  >
+    Home
+  </Styled(Link)>
+  <Styled(Link)
+    to="/about_us"
+  >
+    About Us
+  </Styled(Link)>
+  <Styled(Link)
+    to="/shariah_compliance"
+  >
+    Shariah Compliance
+  </Styled(Link)>
+  <Styled(Link)
+    to="/helpful_websites"
+  >
+    Helpful Websites
+  </Styled(Link)>
+  <Styled(Link)
+    to="/contact_us"
+  >
+    Contact Us
+  </Styled(Link)>
+</styled.div>
 `;

@@ -88,7 +88,7 @@ class HomePageContainer extends Component {
         </StyledImageHolder>
         <Fragment>
           <Input
-            size="massive"
+            size="huge"
             icon={(
               <Icon
                 name="search"

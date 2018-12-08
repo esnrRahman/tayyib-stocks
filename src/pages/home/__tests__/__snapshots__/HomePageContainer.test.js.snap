@@ -21,7 +21,7 @@ exports[`<HomePageContainer /> intially renders correctly 1`] = `
     }
     onChange={[Function]}
     placeholder="Search for a stock..."
-    size="massive"
+    size="huge"
     type="text"
   />
 </styled.div>
@@ -48,7 +48,7 @@ exports[`<HomePageContainer /> renders the ResultMessage if resultMessageProps i
     }
     onChange={[Function]}
     placeholder="Search for a stock..."
-    size="massive"
+    size="huge"
     type="text"
   />
   <ResultMessage
