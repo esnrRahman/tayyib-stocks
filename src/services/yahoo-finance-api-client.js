@@ -70,6 +70,21 @@ export function getCompanySymbolOptionsFromYahoo(searchTerm) {
     });
 }
 
+export function getBalanceSheetInformation(balanceSheetValues) {
+  const balanceSheetInformation = {};
+
+  balanceSheetInformation.totalLiabilities = balanceSheetValues.totalLiab.raw;
+  balanceSheetInformation.cashAndShortTermInvestments = 'shortTermInvestments' in balanceSheetValues
+    ? (balanceSheetValues.cash.raw + balanceSheetValues.shortTermInvestments.raw)
+    : balanceSheetValues.cash.raw;
+
+  balanceSheetInformation.totalReceivables = 'netReceivables' in balanceSheetValues
+    ? balanceSheetValues.netReceivables.raw
+    : 0;
+
+  return balanceSheetInformation;
+}
+
 export function getCalculationFromYahoo(companyName) {
   const result = {
     totalLiabilitiesPercentage: -1,
@@ -128,6 +143,7 @@ export function getCalculationFromYahoo(companyName) {
   ])
     .then(axios.spread((financialsResp, historicalDataResp, sharesOutstandingResp) => {
       const historicalChartResult = historicalDataResp.data.chart.result[0];
+
       if ('events' in historicalChartResult
         && 'splits' in historicalChartResult.events) {
         return {
@@ -142,14 +158,8 @@ export function getCalculationFromYahoo(companyName) {
 
       const balanceSheetValues = financialsResp.data.quoteSummary.result[0]
         .balanceSheetHistoryQuarterly.balanceSheetStatements[0];
-      const balanceSheetInformation = {
-        totalLiabilities: balanceSheetValues.totalLiab.raw,
-        cashAndShortTermInvestments: (
-          balanceSheetValues.cash.raw
-        + balanceSheetValues.shortTermInvestments.raw
-        ),
-        totalReceivables: balanceSheetValues.netReceivables.raw,
-      };
+
+      const balanceSheetInformation = getBalanceSheetInformation(balanceSheetValues);
 
       const totalLiabilitiesPercentage = getPercentageWithAverageMarketCapital(
         balanceSheetInformation.totalLiabilities, averageMarketCapital
