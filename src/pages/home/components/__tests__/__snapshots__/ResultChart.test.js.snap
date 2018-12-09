@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ResultChart /> initial render 1`] = `
+<styled.div>
+  <ResponsiveBar
+    animate={true}
+    axisBottom={
+      Object {
+        "legend": "percentage (%)",
+        "legendOffset": 40,
+        "legendPosition": "middle",
+        "tickPadding": 5,
+        "tickRotation": 0,
+        "tickSize": 5,
+      }
+    }
+    borderColor="inherit:darker(1.6)"
+    colorBy="id"
+    colors="paired"
+    data={
+      Array [
+        Object {
+          "fail": 0,
+          "pass": 10,
+          "y-axis": "Total Debt",
+        },
+        Object {
+          "fail": 10,
+          "pass": 33,
+          "y-axis": "Cash and equivalents",
+        },
+        Object {
+          "fail": 0,
+          "pass": 15,
+          "y-axis": "Accounts Receivable",
+        },
+      ]
+    }
+    indexBy="y-axis"
+    keys={
+      Array [
+        "pass",
+        "fail",
+      ]
+    }
+    labelTextColor="inherit:darker(1.6)"
+    layout="horizontal"
+    margin={
+      Object {
+        "bottom": 50,
+        "left": 170,
+        "right": 130,
+        "top": 0,
+      }
+    }
+    maxValue={100}
+    motionDamping={15}
+    motionStiffness={90}
+    padding={0.5}
+  />
+</styled.div>
+`;

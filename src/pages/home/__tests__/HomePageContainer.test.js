@@ -36,6 +36,23 @@ describe('<HomePageContainer />', () => {
     expect(toJson(wrapperWithResult)).toMatchSnapshot();
   });
 
+  it('renders the chart if chartValues is present', () => {
+    const wrapperWithResult = shallow(<HomePageContainer />);
+
+    wrapperWithResult.setState({
+      chartValues: {
+        debtPass: 33,
+        debtFail: 10.25,
+        cashPass: 33,
+        cashFail: 10.25,
+        receivablesPass: 33,
+        receivablesFail: 10.25,
+      },
+    });
+
+    expect(toJson(wrapperWithResult)).toMatchSnapshot();
+  });
+
   it('renders the HomePageContainer if companyOptions are present', () => {
     const wrapperWithResult = shallow(<HomePageContainer />);
 
@@ -78,7 +95,6 @@ describe('<HomePageContainer />', () => {
     expect(preventDefaultFn).toHaveBeenCalled();
     expect(setStateFn).toHaveBeenCalledWith(
       {
-        yahooResult: null,
         resultMessageProps: null,
       }
     );
@@ -156,11 +172,19 @@ describe('<HomePageContainer />', () => {
   });
 
   it('getResultMessage: Successful calc', () => {
+    const setStateFn = jest.fn();
+    const getChartValuesReturnValue = { a: 1 };
+    const getChartValuesFn = jest.fn(() => getChartValuesReturnValue);
+
+    instance.setState = setStateFn;
+    instance.getChartValues = getChartValuesFn;
+
     const successResult = {
       doAllPass: true,
     };
 
     const returnValue = instance.getResultMessage(successResult);
+    expect(setStateFn).toHaveBeenCalledWith({ chartValues: getChartValuesReturnValue });
     expect(returnValue).toEqual(
       {
         title: 'SUCCESS',
@@ -171,11 +195,19 @@ describe('<HomePageContainer />', () => {
   });
 
   it('getResultMessage: Failed calc', () => {
+    const setStateFn = jest.fn();
+    const getChartValuesReturnValue = { b: 1 };
+    const getChartValuesFn = jest.fn(() => getChartValuesReturnValue);
+
+    instance.setState = setStateFn;
+    instance.getChartValues = getChartValuesFn;
+
     const inputResult = {
       doAllPass: false,
     };
 
     const returnValue = instance.getResultMessage(inputResult);
+    expect(setStateFn).toHaveBeenCalledWith({ chartValues: getChartValuesReturnValue });
     expect(returnValue).toEqual(
       {
         title: 'FAILURE',
@@ -198,5 +230,43 @@ describe('<HomePageContainer />', () => {
         isFailure: true,
       }
     );
+  });
+
+  it('getChartValues', () => {
+    let testYahooResult = {
+      totalLiabilitiesPercentage: 10,
+      cashAndShortTermInvestmentsPercentage: 10,
+      totalReceivablesPercentage: 10,
+    };
+
+    let expectedChartValues = {
+      debtPass: 10,
+      debtFail: 0,
+      cashPass: 10,
+      cashFail: 0,
+      receivablesPass: 10,
+      receivablesFail: 0,
+    };
+
+    let actualChartValues = instance.getChartValues(testYahooResult);
+    expect(expectedChartValues).toEqual(actualChartValues);
+
+    testYahooResult = {
+      totalLiabilitiesPercentage: 43.247,
+      cashAndShortTermInvestmentsPercentage: 43.247,
+      totalReceivablesPercentage: 43.247,
+    };
+
+    expectedChartValues = {
+      debtPass: 33,
+      debtFail: 10.25,
+      cashPass: 33,
+      cashFail: 10.25,
+      receivablesPass: 33,
+      receivablesFail: 10.25,
+    };
+
+    actualChartValues = instance.getChartValues(testYahooResult);
+    expect(expectedChartValues).toEqual(actualChartValues);
   });
 });

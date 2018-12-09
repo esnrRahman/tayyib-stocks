@@ -2,7 +2,7 @@ import React from 'react';
 import { Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import { StyledMessageHeader } from './ResultMessageStyles';
+import { StyledMessageHeader } from './styles/ResultMessageStyles';
 
 const ResultMessage = ({ size, title, description, isFailure }) => (
   <Message size={size || 'large'} positive={!isFailure} negative={isFailure}>
