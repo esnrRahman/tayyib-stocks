@@ -109,3 +109,47 @@ exports[`<HomePageContainer /> renders the ResultMessage if resultMessageProps i
   />
 </styled.div>
 `;
+
+exports[`<HomePageContainer /> renders the chart if chartValues is present 1`] = `
+<styled.div>
+  <styled.div>
+    <img
+      alt="Tayyib Stocks Logo"
+      src="tstocks_full_logo.png"
+    />
+  </styled.div>
+  <Dropdown
+    additionLabel="Add "
+    additionPosition="top"
+    closeOnBlur={true}
+    deburr={false}
+    icon="dropdown"
+    minCharacters={1}
+    noResultsMessage="No results found."
+    onChange={[Function]}
+    onSearchChange={[Function]}
+    openOnFocus={true}
+    options={Array []}
+    placeholder="Search for a stock..."
+    renderLabel={[Function]}
+    search={true}
+    searchInput="text"
+    selectOnBlur={true}
+    selectOnNavigation={true}
+    selection={true}
+    wrapSelection={true}
+  />
+  <ResultChart
+    chartValues={
+      Object {
+        "cashFail": 10.25,
+        "cashPass": 33,
+        "debtFail": 10.25,
+        "debtPass": 33,
+        "receivablesFail": 10.25,
+        "receivablesPass": 33,
+      }
+    }
+  />
+</styled.div>
+`;

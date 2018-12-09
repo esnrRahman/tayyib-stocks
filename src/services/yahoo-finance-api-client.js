@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const THRESHOLD = 33;
+export const THRESHOLD = 33;
 const HISTORICAL_DATA_PERIOD_IN_YEARS = 3;
 
 function getDatePeriodUnixString() {
@@ -30,7 +30,7 @@ function getAverageMarketCapital(historicalDataResp, sharesOutstandingResp) {
   const nullFilteredHistoricalShareData = historicalShareDataList.filter((elem) => elem !== null);
   const shareSummation = nullFilteredHistoricalShareData.reduce((a, b) => a + b, 0);
 
-  return (shareSummation * sharesOutstanding) * 100;
+  return (shareSummation * sharesOutstanding) / (HISTORICAL_DATA_PERIOD_IN_YEARS * 12);
 }
 
 function getPercentageWithAverageMarketCapital(value, averageMarketCapital) {

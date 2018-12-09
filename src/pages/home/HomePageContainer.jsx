@@ -4,9 +4,10 @@ import { Dropdown } from 'semantic-ui-react';
 import { StyledHomePageDiv, StyledImageHolder } from './HomePageContainerStyles';
 import TayyibStocksLogo from './tstocks_full_logo.png';
 import {
-  getCalculationFromYahoo, getCompanySymbolOptionsFromYahoo,
+  THRESHOLD, getCalculationFromYahoo, getCompanySymbolOptionsFromYahoo,
 } from '../../services/yahoo-finance-api-client';
 import ResultMessage from './components/ResultMessage';
+import ResultChart from './components/ResultChart';
 
 class HomePageContainer extends Component {
   constructor(props) {
@@ -14,14 +15,14 @@ class HomePageContainer extends Component {
 
     this.state = {
       companyOptions: [],
-      yahooResult: null,
+      chartValues: null,
       resultMessageProps: null,
     };
   }
 
   handleOnChange = async (event, data) => {
     event.preventDefault();
-    this.setState({ yahooResult: null, resultMessageProps: null });
+    this.setState({ resultMessageProps: null });
     const yahooResult = await getCalculationFromYahoo(data.value);
     this.setState({ resultMessageProps: this.getResultMessage(yahooResult) });
   }
@@ -30,6 +31,35 @@ class HomePageContainer extends Component {
     event.preventDefault();
     const companyOptions = await getCompanySymbolOptionsFromYahoo(data.searchQuery);
     this.setState({ companyOptions });
+  }
+
+  getChartValues = (yahooResult) => {
+    const TO_DECIMAL_PLACES = 2;
+
+    const debtValue = parseFloat(yahooResult.totalLiabilitiesPercentage.toFixed(TO_DECIMAL_PLACES));
+    const cashValue = parseFloat(
+      yahooResult.cashAndShortTermInvestmentsPercentage.toFixed(TO_DECIMAL_PLACES)
+    );
+    const receivablesValue = parseFloat(
+      yahooResult.totalReceivablesPercentage.toFixed(TO_DECIMAL_PLACES)
+    );
+
+    const chartValues = {};
+
+    chartValues.debtPass = debtValue < THRESHOLD ? debtValue : THRESHOLD;
+    chartValues.debtFail = debtValue < THRESHOLD
+      ? 0
+      : parseFloat((debtValue - THRESHOLD).toFixed(TO_DECIMAL_PLACES));
+    chartValues.cashPass = cashValue < THRESHOLD ? cashValue : THRESHOLD;
+    chartValues.cashFail = cashValue < THRESHOLD
+      ? 0
+      : parseFloat((cashValue - THRESHOLD).toFixed(TO_DECIMAL_PLACES));
+    chartValues.receivablesPass = receivablesValue < THRESHOLD ? receivablesValue : THRESHOLD;
+    chartValues.receivablesFail = receivablesValue < THRESHOLD
+      ? 0
+      : parseFloat((cashValue - THRESHOLD).toFixed(TO_DECIMAL_PLACES));
+
+    return chartValues;
   }
 
   getResultMessage = (result) => {
@@ -51,7 +81,7 @@ class HomePageContainer extends Component {
         };
         break;
       case ('doAllPass' in result && result.doAllPass): {
-        this.setState({ yahooResult: result });
+        this.setState({ chartValues: this.getChartValues(result) });
         resultMessageProps = {
           title: 'SUCCESS',
           description: 'The stock is considered halal',
@@ -60,7 +90,7 @@ class HomePageContainer extends Component {
         break;
       }
       case ('doAllPass' in result && !result.doAllPass): {
-        this.setState({ yahooResult: result });
+        this.setState({ chartValues: this.getChartValues(result) });
         resultMessageProps = {
           title: 'FAILURE',
           description: 'The stock is not considered halal',
@@ -80,7 +110,8 @@ class HomePageContainer extends Component {
   }
 
   render() {
-    const { resultMessageProps, yahooResult, companyOptions } = this.state;
+    const { resultMessageProps, chartValues, companyOptions } = this.state;
+
     return (
       <StyledHomePageDiv>
         <StyledImageHolder>
@@ -98,9 +129,9 @@ class HomePageContainer extends Component {
           />
         </Fragment>
         {
-          yahooResult
+          chartValues
           && (
-            <div>A CHART WILL BE HERE</div>
+            <ResultChart chartValues={chartValues} />
           )
         }
         {
