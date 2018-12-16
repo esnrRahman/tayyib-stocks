@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3.7'
 
 services:
   tayyib-stocks:
@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: yarn start
     volumes:
       - '.:/usr/src/tayyib-stocks'
       - '/usr/src/tayyib-stocks/node_modules'
