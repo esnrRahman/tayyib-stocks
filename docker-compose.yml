@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  tayyib-stocks:
+    container_name: tayyib-stocks
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/tayyib-stocks'
+      - '/usr/src/tayyib-stocks/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
