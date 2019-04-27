@@ -10,5 +10,3 @@ COPY yarn.lock yarn.lock
 RUN yarn install
 
 COPY . .
-
-CMD ["npm", "start"]
