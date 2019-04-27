@@ -149,7 +149,7 @@ describe('<HomePageContainer />', () => {
     expect(returnValue).toEqual(
       {
         title: 'ERROR',
-        description: 'Unable to find the stocks for this company',
+        description: 'Stock not found',
         isFailure: true,
       }
     );
@@ -165,7 +165,7 @@ describe('<HomePageContainer />', () => {
     expect(returnValue).toEqual(
       {
         title: 'FAILURE',
-        description: 'Cannot determine for this company as the stock has been split',
+        description: 'Could not calculate financial ratios properly due to technical issues',
         isFailure: true,
       }
     );
@@ -188,7 +188,7 @@ describe('<HomePageContainer />', () => {
     expect(returnValue).toEqual(
       {
         title: 'SUCCESS',
-        description: 'The stock is considered halal',
+        description: 'Stock passes financial ratio screens; please ensure it passes industry/business screens before investing',
         isFailure: false,
       }
     );
@@ -211,7 +211,7 @@ describe('<HomePageContainer />', () => {
     expect(returnValue).toEqual(
       {
         title: 'FAILURE',
-        description: 'The stock is not considered halal',
+        description: 'Stock does not pass financial ratio screens',
         isFailure: true,
       }
     );

@@ -69,14 +69,14 @@ class HomePageContainer extends Component {
       case ('isFound' in result && !result.isFound):
         resultMessageProps = {
           title: 'ERROR',
-          description: 'Unable to find the stocks for this company',
+          description: 'Stock not found',
           isFailure: true,
         };
         break;
       case ('doSplitsExist' in result && result.doSplitsExist):
         resultMessageProps = {
           title: 'FAILURE',
-          description: 'Cannot determine for this company as the stock has been split',
+          description: 'Could not calculate financial ratios properly due to technical issues',
           isFailure: true,
         };
         break;
@@ -84,7 +84,7 @@ class HomePageContainer extends Component {
         this.setState({ chartValues: this.getChartValues(result) });
         resultMessageProps = {
           title: 'SUCCESS',
-          description: 'The stock is considered halal',
+          description: 'Stock passes financial ratio screens; please ensure it passes industry/business screens before investing',
           isFailure: false,
         };
         break;
@@ -93,7 +93,7 @@ class HomePageContainer extends Component {
         this.setState({ chartValues: this.getChartValues(result) });
         resultMessageProps = {
           title: 'FAILURE',
-          description: 'The stock is not considered halal',
+          description: 'Stock does not pass financial ratio screens',
           isFailure: true,
         };
         break;

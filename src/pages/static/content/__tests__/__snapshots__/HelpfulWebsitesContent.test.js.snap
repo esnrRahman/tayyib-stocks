@@ -9,7 +9,7 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
       width={4}
     >
       <img
-        alt="Tayyib Stocks Logo"
+        alt="Dow Jones Logo"
         src="dowjones_logo.png"
       />
     </GridColumn>
@@ -26,7 +26,7 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
       width={4}
     >
       <img
-        alt="Tayyib Stocks Logo"
+        alt="Trefis Logo"
         src="trefis_logo.png"
       />
     </GridColumn>
@@ -43,14 +43,14 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
       width={4}
     >
       <img
-        alt="Tayyib Stocks Logo"
-        src="google_finance_logo.png"
+        alt="Yahoo Finance Logo"
+        src="yahoo_finance_logo.png"
       />
     </GridColumn>
     <GridColumn
       width={9}
     >
-      Google Finance is useful for obtaining all types of financial data for various publicly traded companies across the globe. This financial data can be used to re-calculate the financial ratios being presented here for double checking the results. Moreover, all the data is free for the general public viewing.
+      Yahoo Finance is useful for obtaining all types of financial data for various publicly traded companies across the globe. This financial data can be used to re-calculate the financial ratios being presented here for double checking the results. Moreover, all the data is free for the general public viewing.
     </GridColumn>
   </GridRow>
   <GridRow
@@ -60,7 +60,7 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
       width={4}
     >
       <img
-        alt="Tayyib Stocks Logo"
+        alt="Seeking Alpha Logo"
         src="seeking_alpha_logo.png"
       />
     </GridColumn>
@@ -68,23 +68,6 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
       width={9}
     >
       Seeking Alpha is the latest news, updates and discussions on your favourite stocks. It is also possible to get real time email alerts for stocks of interest, email newsletters and apps for mobile devices.
-    </GridColumn>
-  </GridRow>
-  <GridRow
-    centered={true}
-  >
-    <GridColumn
-      width={4}
-    >
-      <img
-        alt="Tayyib Stocks Logo"
-        src="sanlam_logo.png"
-      />
-    </GridColumn>
-    <GridColumn
-      width={9}
-    >
-      Sanlam is an alternate source describing the process of identifying and investing in Shar’iah Compliant organizations.
     </GridColumn>
   </GridRow>
 </Grid>
