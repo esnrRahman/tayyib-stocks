@@ -3,8 +3,7 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
 import DowJonesLogo from '../images/dowjones_logo.png';
-import GoogleLogo from '../images/google_finance_logo.png';
-import SanlamLogo from '../images/sanlam_logo.png';
+import YahooLogo from '../images/yahoo_finance_logo.png';
 import SeekingAlphaLogo from '../images/seeking_alpha_logo.png';
 import TrefisLogo from '../images/trefis_logo.png';
 
@@ -12,7 +11,7 @@ const HelpfulWebsitesContent = () => (
   <Grid>
     <Grid.Row centered>
       <Grid.Column width={4}>
-        <img src={DowJonesLogo} alt="Tayyib Stocks Logo" />
+        <img src={DowJonesLogo} alt="Dow Jones Logo" />
       </Grid.Column>
       <Grid.Column width={9}>
         The Dow Jones Islamic Market Index screens for Shar&rsquo;iah Compliance was used as a
@@ -23,7 +22,7 @@ const HelpfulWebsitesContent = () => (
 
     <Grid.Row centered>
       <Grid.Column width={4}>
-        <img src={TrefisLogo} alt="Tayyib Stocks Logo" />
+        <img src={TrefisLogo} alt="Trefis Logo" />
       </Grid.Column>
       <Grid.Column width={9}>
         Trefis is an excellent website which can be used to understand how the different product
@@ -35,10 +34,10 @@ const HelpfulWebsitesContent = () => (
 
     <Grid.Row centered>
       <Grid.Column width={4}>
-        <img src={GoogleLogo} alt="Tayyib Stocks Logo" />
+        <img src={YahooLogo} alt="Yahoo Finance Logo" />
       </Grid.Column>
       <Grid.Column width={9}>
-        Google Finance is useful for obtaining all types of financial data for various publicly
+        Yahoo Finance is useful for obtaining all types of financial data for various publicly
         traded companies across the globe. This financial data can be used to re-calculate the
         financial ratios being presented here for double checking the results. Moreover, all the
         data is free for the general public viewing.
@@ -47,22 +46,12 @@ const HelpfulWebsitesContent = () => (
 
     <Grid.Row centered>
       <Grid.Column width={4}>
-        <img src={SeekingAlphaLogo} alt="Tayyib Stocks Logo" />
+        <img src={SeekingAlphaLogo} alt="Seeking Alpha Logo" />
       </Grid.Column>
       <Grid.Column width={9}>
         Seeking Alpha is the latest news, updates and discussions on your favourite stocks. It is
         also possible to get real time email alerts for stocks of interest, email newsletters
         and apps for mobile devices.
-      </Grid.Column>
-    </Grid.Row>
-
-    <Grid.Row centered>
-      <Grid.Column width={4}>
-        <img src={SanlamLogo} alt="Tayyib Stocks Logo" />
-      </Grid.Column>
-      <Grid.Column width={9}>
-        Sanlam is an alternate source describing the process of identifying and investing in
-        Shar&rsquo;iah Compliant organizations.
       </Grid.Column>
     </Grid.Row>
   </Grid>
