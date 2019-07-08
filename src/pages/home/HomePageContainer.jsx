@@ -66,6 +66,13 @@ class HomePageContainer extends Component {
     let resultMessageProps;
 
     switch (true) {
+      case (result === undefined):
+        resultMessageProps = {
+          title: 'ERROR',
+          description: 'Something went wrong! Please try again later',
+          isFailure: true,
+        };
+        break;
       case ('isFound' in result && !result.isFound):
         resultMessageProps = {
           title: 'ERROR',
