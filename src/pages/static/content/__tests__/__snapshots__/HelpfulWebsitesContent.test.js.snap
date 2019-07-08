@@ -8,8 +8,9 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
     <GridColumn
       width={4}
     >
-      <img
+      <styled.img
         alt="Dow Jones Logo"
+        onClick={[Function]}
         src="dowjones_logo.png"
       />
     </GridColumn>
@@ -23,10 +24,12 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
     centered={true}
   >
     <GridColumn
+      verticalAlign="middle"
       width={4}
     >
-      <img
+      <styled.img
         alt="Trefis Logo"
+        onClick={[Function]}
         src="trefis_logo.png"
       />
     </GridColumn>
@@ -42,8 +45,9 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
     <GridColumn
       width={4}
     >
-      <img
+      <styled.img
         alt="Yahoo Finance Logo"
+        onClick={[Function]}
         src="yahoo_finance_logo.png"
       />
     </GridColumn>
@@ -59,12 +63,14 @@ exports[`<HelpfulWebsitesContent /> renders correctly 1`] = `
     <GridColumn
       width={4}
     >
-      <img
+      <styled.img
         alt="Seeking Alpha Logo"
+        onClick={[Function]}
         src="seeking_alpha_logo.png"
       />
     </GridColumn>
     <GridColumn
+      verticalAlign="middle"
       width={9}
     >
       Seeking Alpha is the latest news, updates and discussions on your favourite stocks. It is also possible to get real time email alerts for stocks of interest, email newsletters and apps for mobile devices.
